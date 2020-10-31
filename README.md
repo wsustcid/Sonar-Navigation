@@ -27,8 +27,14 @@ With the help of our STUD and our driving model, various indoor navigation tasks
 
 **Citation**
 If you find our work useful in your research, please consider citing:
-```latex
-Shuai, Wang, Jiahu Qin, and Zhanpeng Zhang, "Spatio-Temporal Ultrasonic Dataset: Learning Driving from Spatial and Temporal Ultrasonic Cues," In 2020 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS), pp. 1-8. IEEE, 2020.
+```
+@inproceedings{stud2020,
+  author = {Shuai, Wang, Jiahu Qin, and Zhanpeng Zhang},
+  title = {Spatio-Temporal Ultrasonic Dataset: Learning Driving from Spatial and Temporal Ultrasonic Cues},
+  year = {2020},
+  eprint = {2020 IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS)},
+  url = {...}
+}
 ```
 
 
