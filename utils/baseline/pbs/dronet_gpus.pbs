@@ -1,0 +1,16 @@
+#PBS    -N  dnet_gpus
+#PBS    -o  /ghome/wangshuai/Sonar_Navigation/log/$PBS_JOBID.out
+#PBS    -e  /ghome/wangshuai/Sonar_Navigation/log/$PBS_JOBID.err
+#PBS    -l nodes=1:gpus=8:E
+#PBS    -r y
+#PBS    -q batch
+cd $PBS_O_WORKDIR
+echo Time is `date`
+echo Directory is $PWD
+echo This job runs on following nodes:
+echo -n "Node:"
+cat $PBS_NODEFILE
+echo -n "Gpus:"
+cat $PBS_GPUFILE
+echo "CUDA_VISIBLE_DEVICES:"$CUDA_VISIBLE_DEVICES
+startdocker -D /gdata/wangshuai/ -c "python /ghome/wangshuai/Sonar_Navigation/train_gpus.py --date_prefix=2020_ --csv_path=/gdata/wangshuai/sonarset/sim/track-I-II/2019-07-03-16.csv --length=12 --dim=2 --target_height=192 --target_width=192 --batch_size=128 --model_type=cnn_models --model_name=dronet --epochs=4000 --num_gpu=8" bit:5000/deepo_9

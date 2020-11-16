@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!--
+Parameters:
+  - model_path: the path of saved model
+  - model_name: the name of saved model
+  - input_mode: the array shape of saved untrasonic data 
+               1: used for Onde-dimensional MLP
+               2: used for Two-dimensional CNN
+               3: used for Three-dimensional CNN
+  - length: the length of time sequence for the data
+  - set_velocity: the predefined velocity
+  - venv: the path of the virtual environment
+  path:=/home/
+
+-->
+
+<launch>
+<!-- Start robot driver (Simulator or a real robot should be start first) -->
+<node pkg="rosaria" type="RosAria" name="RosAria" output="screen"/>
+
+<arg name="weights_path" default="/home/ubuntu16/catkin_ws/src/sonar_navigation/output/V201/weights/1_weights_86_0.8785.h5" />
+<arg name="length" default="12" />
+<arg name="dim" default="3" />
+<arg name="channels" default="3" />
+<arg name="height" default="66" />
+<arg name="width" default="200" />
+<arg name="velocity" default="0.4" />
+
+<node pkg="sonar_navigation" type="drive.py" name="drive" output="screen" >
+  <param name="weights_path" value="$(arg weights_path)"/>
+  <param name="length" value="$(arg length)"/>
+  <param name="dim" value="$(arg dim)"/>
+  <param name="channels" value="$(arg channels)"/>
+  <param name="height" value="$(arg height)" />
+  <param name="width" value="$(arg width)" />
+  <param name="velocity" value="$(arg velocity)"/>
+  
+</node>
+
+</launch>
